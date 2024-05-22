@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlexHunter18!</title>
+</head>
+<body>
+
+<button id="alexButton">alexcounter</button>
+
+<audio id="audio" loop>
+    <source src="guit1.mp3" type="audio/mpeg">
+    Tu navegador es pobre y no soporta el elemento de audio.
+</audio>
+
+<script>
+    document.getElementById('alexButton').onclick = function() {
+        var audio = document.getElementById('audio');
+        var img = document.createElement('img');
+        img.src = 'ale.png';
+        document.body.appendChild(img);
+        audio.play();
+        
+        // Deshabilitar el botón después de hacer clic
+        this.disabled = true;
+    };
+</script>
+
+</body>
+</html>
