@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlexHunter18!</title>
+    <style>
+        #alexButton {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            margin-right:
+        }
+        
+        #sneoButton {
+            position: fixed;
+            top: 10px;
+            left: 100px;
+        }
+
+        img {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="alexButton">alexcounter</button>
+
+<button id="sneoButton">sneo</button>
+
+<audio id="audioAlex" loop>
+    <source src="guit1.mp3" type="audio/mpeg">
+    Error
+</audio>
+
+<audio id="audioSneo">
+    <source src="sneo.mp3" type="audio/mpeg">
+    Error
+</audio>
+
+<script>
+    var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+    document.getElementById('alexButton').onclick = function() {
+        var audioAlex = document.getElementById('audioAlex');
+        var audioSneo = document.getElementById('audioSneo');
+        var img = document.createElement('img');
+        img.src = isMobile ? 'alemobile.png' : 'ale.png';
+        
+        var existingImg = document.querySelector('img');
+        if(existingImg) {
+            existingImg.remove();
+        }
+
+        document.body.appendChild(img);
+        audioAlex.currentTime = 0;
+        audioAlex.play();
+        
+        if (!audioSneo.paused) {
+            audioSneo.pause();
+        }
+        
+        this.disabled = true;
+        document.getElementById('sneoButton').disabled = false;
+    };
+
+    document.getElementById('sneoButton').onclick = function() {
+        var audioAlex = document.getElementById('audioAlex');
+        var audioSneo = document.getElementById('audioSneo');
+        var img = document.createElement('img');
+        img.src = isMobile ? 'sneomobile.png' : 'sneo.png';
+        
+        var existingImg = document.querySelector('img');
+        if(existingImg) {
+            existingImg.remove();
+        }
+
+        document.body.appendChild(img);
+        audioSneo.currentTime = 0;
+        audioSneo.play();
+        
+        if (!audioAlex.paused) {
+            audioAlex.pause();
+        }
+        
+        this.disabled = true;
+        document.getElementById('alexButton').disabled = false;
+    };
+</script>
+
+</body>
+</html>
