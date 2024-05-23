@@ -18,6 +18,12 @@
             left: 100px;
         }
 
+        #tanoButton {
+            position: fixed;
+            top: 10px;
+            left: 150px;
+        }
+
         img {
             margin-top: 50px;
         }
@@ -29,6 +35,8 @@
 
 <button id="sneoButton">sneo</button>
 
+<button id="tanoButton">tano</button>
+
 <audio id="audioAlex" loop>
     <source src="guit1.mp3" type="audio/mpeg">
     Error
@@ -39,12 +47,18 @@
     Error
 </audio>
 
+<audio id="audioTano">
+    <source src="tano.mp3" type="audio/mpeg">
+    Error
+</audio>
+
 <script>
     var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
 
     document.getElementById('alexButton').onclick = function() {
         var audioAlex = document.getElementById('audioAlex');
         var audioSneo = document.getElementById('audioSneo');
+        var audioTano = document.getElementById('audioTano');
         var img = document.createElement('img');
         img.src = isMobile ? 'alemobile.png' : 'ale.png';
         
@@ -61,13 +75,19 @@
             audioSneo.pause();
         }
         
+        if (!audioTano.paused) {
+            audioTano.pause();
+        }
+        
         this.disabled = true;
         document.getElementById('sneoButton').disabled = false;
+        document.getElementById('tanoButton').disabled = false;
     };
 
     document.getElementById('sneoButton').onclick = function() {
         var audioAlex = document.getElementById('audioAlex');
         var audioSneo = document.getElementById('audioSneo');
+        var audioTano = document.getElementById('audioTano');
         var img = document.createElement('img');
         img.src = isMobile ? 'sneomobile.png' : 'sneo.png';
         
@@ -84,8 +104,42 @@
             audioAlex.pause();
         }
         
+        if (!audioTano.paused) {
+            audioTano.pause();
+        }
+        
         this.disabled = true;
         document.getElementById('alexButton').disabled = false;
+        document.getElementById('tanoButton').disabled = false;
+    };
+
+    document.getElementById('tanoButton').onclick = function() {
+        var audioAlex = document.getElementById('audioAlex');
+        var audioSneo = document.getElementById('audioSneo');
+        var audioTano = document.getElementById('audioTano');
+        var img = document.createElement('img');
+        img.src = isMobile ? 'tanomobile.png' : 'tano.png';
+        
+        var existingImg = document.querySelector('img');
+        if(existingImg) {
+            existingImg.remove();
+        }
+
+        document.body.appendChild(img);
+        audioTano.currentTime = 0;
+        audioTano.play();
+        
+        if (!audioAlex.paused) {
+            audioAlex.pause();
+        }
+        
+        if (!audioSneo.paused) {
+            audioSneo.pause();
+        }
+        
+        this.disabled = true;
+        document.getElementById('alexButton').disabled = false;
+        document.getElementById('sneoButton').disabled = false;
     };
 </script>
 
